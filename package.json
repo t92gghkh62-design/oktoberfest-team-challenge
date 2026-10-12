@@ -1,0 +1,11 @@
+{
+  "name": "wiesn-team-challenge-online",
+  "version": "4.0.0",
+  "private": true,
+  "description": "Dependency-free online backend for Wiesn Team Challenge",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo ok"
+  }
+}

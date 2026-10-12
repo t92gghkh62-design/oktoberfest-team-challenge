@@ -1,0 +1,17 @@
+# Render Blueprint – kostenlose Variante (Free-Plan). Spielstand liegt in Upstash Redis (kostenlos),
+# weil das Dateisystem auf Render Free bei jedem Neustart/Ruhezustand gelöscht wird.
+services:
+  - type: web
+    name: wiesn-team-challenge
+    runtime: node
+    plan: free
+    region: frankfurt
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: UPSTASH_REDIS_REST_URL
+        sync: false        # wird beim Anlegen des Blueprints abgefragt
+      - key: UPSTASH_REDIS_REST_TOKEN
+        sync: false
