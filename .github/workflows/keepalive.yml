@@ -1,0 +1,14 @@
+name: keepalive
+# Haelt den Render-Dienst nur am Eventtag wach: Mittwoch 21.10.2026, ca. 15:00-23:55 Schweizer Sommerzeit (13-21 Uhr UTC)
+on:
+  schedule:
+    - cron: '*/5 13-21 21 10 *'
+  workflow_dispatch:
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping
+        run: curl -fsS --max-time 90 --retry 2 "${APP_URL:-https://wiesn-team-challenge.onrender.com}/api/health"
+        env:
+          APP_URL: ${{ vars.APP_URL }}
